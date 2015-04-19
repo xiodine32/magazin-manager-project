@@ -28,7 +28,7 @@ public:
     std::string getMasura() const;
     std::string getNume() const;
 
-    trasaturi_t getTrasaturi() const;
+    const ModelBun::trasaturi_t &getTrasaturi() const;
     int getStoc() const;
     double getPret() const;
     double getPretFurnizor() const;

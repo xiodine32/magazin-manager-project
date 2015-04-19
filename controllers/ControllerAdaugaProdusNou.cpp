@@ -40,22 +40,17 @@ void ControllerAdaugaProdusNou::run(ModelStoc &stoc) {
     stringstream reader;
 
     con << "Introduceti numar produse in stoc: ";
-
-    reader << con.getLine();
+    reader << con.getLine() << "\n";
+    con << "Introduce pret de vanzare (virgula cu punct): ";
+    reader << con.getLine() << "\n";
+    con << "Introduce pretul de la furnizor (virgula cu punct): ";
+    reader << con.getLine() << "\n";
 
     int nr_stoc;
     reader >> nr_stoc;
 
-    con << "Introduce pret de vanzare (virgula cu punct): ";
-
-    reader << con.getLine();
-
     double pret;
     reader >> pret;
-
-    con << "Introduce pretul de la furnizor (virgula cu punct): ";
-
-    reader << con.getLine();
 
     double pret_furnizor;
     reader >> pret_furnizor;

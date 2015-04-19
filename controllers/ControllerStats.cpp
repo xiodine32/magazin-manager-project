@@ -25,7 +25,17 @@ void ControllerStats::run(ModelStoc &stoc) {
     for (vect::const_iterator i = elemente.begin(); i != elemente.end(); ++i) {
         const ModelBun *bun = (*i);
         con << "Bun: " << bun->getNume() << "\n";
-        con << "ModelStoc: " << bun->getStoc() << "\n";
+        con << "Masura: " << bun->getMasura() << "\n";
+        con << "Stoc: " << bun->getStoc() << "\n";
+        con << "Trasaturi: ";
+        ModelBun::trasaturi_t trasaturi = bun->getTrasaturi();
+        for (ModelBun::trasaturi_t::const_iterator j = trasaturi.begin(); j != trasaturi.end(); ++j) {
+            if (j != trasaturi.begin())
+                con << ", ";
+            con << '\'' << *j << '\'';
+        }
         con << "\n";
+        con << "Pret vanzare: " << bun->getPret() << "\n";
+        con << "Pret furnizor: " << bun->getPretFurnizor() << "\n";
     }
 }

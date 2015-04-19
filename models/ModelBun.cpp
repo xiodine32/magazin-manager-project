@@ -23,7 +23,7 @@ std::string ModelBun::getMasura() const {
     return masura_;
 }
 
-ModelBun::trasaturi_t ModelBun::getTrasaturi() const {
+const ModelBun::trasaturi_t &ModelBun::getTrasaturi() const {
     return trasaturi_;
 }
 
@@ -55,7 +55,7 @@ std::ostream &ModelBun::saveSettings(std::ostream &out) const {
         out<<(*i)<<"\n";
         d("saving trasatura: %s", i->c_str());
     }
-    d("saving stoc: %3.3f", stoc_);
+    d("saving stoc: %d", stoc_);
     out<<stoc_<<"\n";
     d("saving pret: %3.3f", pret_);
     out<<pret_<<"\n";
@@ -96,10 +96,8 @@ ModelBun::ModelBun(std::istream &input) {
 
     if (success && !(input>>stoc_))
         success = false;
-
     if (success && !(input>>pret_))
         success = false;
-
     if (success && !(input>>pret_furnizor_))
         success = false;
 
