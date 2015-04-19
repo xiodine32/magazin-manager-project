@@ -4,6 +4,7 @@
 
 #include "ControllerStats.h"
 #include "../log.h"
+#include "../views/ViewConsole.h"
 
 ControllerStats::ControllerStats() {
     d("ControllerStats");
@@ -16,13 +17,15 @@ ControllerStats::~ControllerStats() {
 
 void ControllerStats::run(ModelStoc &stoc) {
 
+    ViewConsole &con = ViewConsole::getSingleton();
+
     typedef std::vector<const ModelBun *> vect;
 
     vect elemente = stoc.getBunuriPointer();
     for (vect::const_iterator i = elemente.begin(); i != elemente.end(); ++i) {
         const ModelBun *bun = (*i);
-        std::cout << "Bun: " << bun->getNume() << "\n";
-        std::cout << "ModelStoc: " << bun->getStoc() << "\n";
-        std::cout << "\n";
+        con << "Bun: " << bun->getNume() << "\n";
+        con << "ModelStoc: " << bun->getStoc() << "\n";
+        con << "\n";
     }
 }

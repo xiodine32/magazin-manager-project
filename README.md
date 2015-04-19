@@ -9,7 +9,7 @@ Actiuni posibile
 Query
 ---
 
- * **STOP** Opreste executia programului.
+ * **stop** Opreste executia programului.
   
  * **adauga** Adauga stoc nou
  
@@ -20,7 +20,7 @@ Query
  * **goale** Vezi stoc gol
  
  
-STOP
+stop
 ---
 
 Atunci cand se incarca programul, el continua de unde a fost lansat

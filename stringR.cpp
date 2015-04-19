@@ -12,3 +12,7 @@ void stringR::toLowerCase() {
             elm = elm - 'A' + 'a';
     }
 }
+
+stringR::stringR(const std::string &r) : std::string(r) { }
+
+stringR::stringR() : std::string() {}

@@ -9,6 +9,9 @@
 
 class stringR : public std::string {
 public:
+    stringR();
+
+    stringR(const std::string &r);
     void toLowerCase();
 };
 
