@@ -13,5 +13,5 @@ Controller::~Controller() {
 }
 
 void Controller::run(Stoc &stoc) {
-    d("Controller running, not using stoc!");
+    w("Implicit run called");
 }
