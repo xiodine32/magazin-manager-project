@@ -14,7 +14,7 @@
 
 void Engine::run() {
     ViewConsole &con = ViewConsole::getSingleton();
-    std::vector<std::string> options;
+    ViewConsole::queryOptions_t options;
     options.push_back("stop");
     options.push_back("adauga");
     options.push_back("comanda");

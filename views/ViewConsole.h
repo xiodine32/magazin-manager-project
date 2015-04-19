@@ -19,6 +19,8 @@ class ViewConsole {
 public:
     static ViewConsole &getSingleton();
 
+    typedef std::vector<std::string> queryOptions_t;
+
     template<class T>
     ViewConsole &operator<<(const T &ceva) {
         std::cout << ceva;
@@ -33,7 +35,7 @@ public:
 
     std::string getLine();
 
-    std::string quizUser(std::string queryString, const std::vector<std::string> &queryOptions);
+    std::string quizUser(std::string queryString, const queryOptions_t &queryOptions);
 
 
 };
