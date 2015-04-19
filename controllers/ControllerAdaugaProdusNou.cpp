@@ -26,7 +26,7 @@ void ControllerAdaugaProdusNou::run(ModelStoc &stoc) {
     string masura = con.getLine();
 
     bool introduceTrasaturi = true;
-    vector<string> trasaturi;
+    ModelBun::trasaturi_t trasaturi;
     do {
         con << "Introduce trasatura (stop/blonda/bruna/anul/etc): ";
         string temp = con.getLine();

@@ -23,7 +23,7 @@ std::string ModelBun::getMasura() const {
     return masura_;
 }
 
-std::vector<std::string> ModelBun::getTrasaturi() const {
+ModelBun::trasaturi_t ModelBun::getTrasaturi() const {
     return trasaturi_;
 }
 

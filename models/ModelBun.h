@@ -13,8 +13,9 @@
 class ModelBun : public Model {
 public:
 
+    typedef std::vector<std::string> trasaturi_t;
 
-    ModelBun(std::string nume, std::string masura, std::vector<std::string> const &trasaturi, int stoc, double pret,
+    ModelBun(std::string nume, std::string masura, trasaturi_t const &trasaturi, int stoc, double pret,
         double pret_furnizor);
 
 
@@ -26,7 +27,8 @@ public:
 
     std::string getMasura() const;
     std::string getNume() const;
-    std::vector<std::string> getTrasaturi() const;
+
+    trasaturi_t getTrasaturi() const;
     int getStoc() const;
     double getPret() const;
     double getPretFurnizor() const;
@@ -34,7 +36,7 @@ public:
 private:
     std::string nume_;
     std::string masura_;
-    std::vector<std::string> trasaturi_;
+    trasaturi_t trasaturi_;
     int stoc_;
     double pret_;
     double pret_furnizor_;
