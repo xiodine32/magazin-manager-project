@@ -8,14 +8,15 @@
 
 #include "Controller.h"
 
-class Readme : public Controller {
+
+class ControllerReadme : public Controller {
 
 public:
-    Readme();
+    ControllerReadme();
 
-    virtual ~Readme();
+    virtual ~ControllerReadme();
 
-    virtual void run(Stoc &stoc);
+    virtual void run(ModelStoc &stoc);
 };
 
 

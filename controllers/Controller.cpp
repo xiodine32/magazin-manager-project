@@ -12,6 +12,6 @@ Controller::~Controller() {
     d("Controller despawned");
 }
 
-void Controller::run(Stoc &stoc) {
+void Controller::run(ModelStoc &stoc) {
     w("Implicit run called");
 }

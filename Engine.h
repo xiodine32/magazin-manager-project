@@ -6,11 +6,11 @@
 #define POO_2_ENGINE_H
 
 
-#include "models/Stoc.h"
+#include "models/ModelStoc.h"
 
 class Engine {
 private:
-    Stoc stoc_;
+    ModelStoc stoc_;
     void load();
 
 public:

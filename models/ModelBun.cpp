@@ -2,10 +2,10 @@
 // Created by xiodine on 4/15/15.
 //
 
-#include "Bun.h"
+#include "ModelBun.h"
 #include "../log.h"
 
-Bun::Bun(std::string nume,
+ModelBun::ModelBun(std::string nume,
          std::string masura,
          std::vector<std::string> const &trasaturi,
          int stoc,
@@ -15,35 +15,35 @@ Bun::Bun(std::string nume,
 
 }
 
-std::string Bun::getNume() const {
+std::string ModelBun::getNume() const {
     return nume_;
 }
 
-std::string Bun::getMasura() const {
+std::string ModelBun::getMasura() const {
     return masura_;
 }
 
-std::vector<std::string> Bun::getTrasaturi() const {
+std::vector<std::string> ModelBun::getTrasaturi() const {
     return trasaturi_;
 }
 
-int Bun::getStoc() const {
+int ModelBun::getStoc() const {
     return stoc_;
 }
 
-double Bun::getPret() const {
+double ModelBun::getPret() const {
     return pret_;
 }
 
-double Bun::getPretFurnizor() const {
+double ModelBun::getPretFurnizor() const {
     return pret_furnizor_;
 }
 
-std::istream &Bun::loadSettings(std::istream &in) {
+std::istream &ModelBun::loadSettings(std::istream &in) {
     return in;
 }
 
-std::ostream & Bun::saveSettings(std::ostream &out) const {
+std::ostream &ModelBun::saveSettings(std::ostream &out) const {
     d("saving nume: %s", nume_.c_str());
     d("saving masura: %s", masura_.c_str());
     d("saving trasaturi size: %d", trasaturi_.size());
@@ -65,7 +65,7 @@ std::ostream & Bun::saveSettings(std::ostream &out) const {
     return out;
 }
 
-Bun::Bun(std::istream &input) {
+ModelBun::ModelBun(std::istream &input) {
     bool success = true;
 
     if (!(getline(input, nume_)))

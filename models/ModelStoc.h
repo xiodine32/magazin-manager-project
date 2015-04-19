@@ -5,24 +5,24 @@
 #ifndef POO_2_STOC_H
 #define POO_2_STOC_H
 
-#include "Bun.h"
+#include "ModelBun.h"
 #include "Model.h"
 
 #include <vector>
 
-class Stoc : public Model {
-    std::vector<Bun> bunuri_;
+class ModelStoc : public Model {
+    std::vector<ModelBun> bunuri_;
 public:
 
     std::istream &loadSettings(std::istream &in);
 
     std::ostream &saveSettings(std::ostream &out) const;
 
-    const Bun *getBunQuery(std::string query) const;
+    const ModelBun *getBunQuery(std::string query) const;
 
-    std::vector<const Bun*> getBunuriPointer() const;
+    std::vector<const ModelBun *> getBunuriPointer() const;
 
-    void addBun(Bun bun);
+    void addBun(ModelBun bun);
 };
 
 

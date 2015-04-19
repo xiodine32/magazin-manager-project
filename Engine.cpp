@@ -5,9 +5,9 @@
 #include "Engine.h"
 #include "log.h"
 #include "controllers/Controller.h"
-#include "controllers/Stats.h"
-#include "controllers/Readme.h"
 #include "stringR.h"
+#include "controllers/ControllerStats.h"
+#include "controllers/ControllerReadme.h"
 
 #include <fstream>
 
@@ -19,11 +19,11 @@ void Engine::run() {
         query.toLowerCase();
         Controller *controller = NULL;
         if (query == "stats") {
-            controller = new Stats();
+            controller = new ControllerStats();
         } else if (query == "d") {
             LOG_TOGGLE = !LOG_TOGGLE;
         } else if (query == "readme") {
-            controller = new Readme();
+            controller = new ControllerReadme();
         } else {
             if (query != "stop") {
                 std::cout << "Nu am inteles!\n";

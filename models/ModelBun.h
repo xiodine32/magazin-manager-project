@@ -10,15 +10,15 @@
 #include <string>
 #include <vector>
 
-class Bun : public Model {
+class ModelBun : public Model {
 public:
 
 
-    Bun(std::string nume, std::string masura, std::vector<std::string> const &trasaturi, int stoc, double pret,
+    ModelBun(std::string nume, std::string masura, std::vector<std::string> const &trasaturi, int stoc, double pret,
         double pret_furnizor);
 
 
-    Bun(std::istream &input);
+    ModelBun(std::istream &input);
 
     std::istream &loadSettings(std::istream &in);
 
