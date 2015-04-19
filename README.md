@@ -1,6 +1,11 @@
 Proiect POO 2
 ===
 
+**Proiectul este construit cu cmake!**
+
+Actiuni posibile
+===
+
 Query
 ---
 
@@ -43,14 +48,25 @@ Comenzi posibile:
  2. subtotal - **subtotatul curent**
  3. finalizare - **finalizare comanda**
  
-Finalizarea comenzii scoate produsele din stoc si afiseaza produsele ce vor fi
-livrate imediat clientului.
+Finalizarea comenzii scoate produsele din stoc si afiseaza produsele ce vor
+fi livrate imediat clientului.
 
 stats
 ---
 
 Afiseaza statisticile despre produsele magazinului, mai exact:
  
- * Stocul pentru fiecare produs.Clientul poate cere: 
+ * Stocul pentru fiecare produs.
  * Profitul obtinut de cand a fost iniatilizat programul.
- * 
+
+goale
+---
+
+Afiseaza toate produsele ce nu mai au stoc.
+
+Aveti doua optiuni:
+
+ 1. **sterge <ID>** - Sterge produsul cu <ID>-ul afisat din lista de produse
+ existente, pentru ca *nu o sa mai primesti stoc pentru el*
+ 
+ 2. **lista** - Afiseaza lista de produse ce nu mai sunt pe stoc. 
