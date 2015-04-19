@@ -11,6 +11,6 @@
 
 void log_nomacro(const char *type, const char *function, int line, const char *a, ...);
 
-
+extern bool LOG_TOGGLE;
 
 #endif //POO_2_LOG_H

@@ -5,30 +5,36 @@
 #include "Engine.h"
 #include "log.h"
 #include "controllers/Controller.h"
-#include "controllers/Viewer.h"
+#include "controllers/Stats.h"
+#include "controllers/Readme.h"
+#include "stringR.h"
 
 #include <fstream>
-#include <iostream>
 
 void Engine::run() {
-    std::string query;
+    stringR query;
     do {
         std::cout << "Query (vezi README): ";
         getline(std::cin, query);
+        query.toLowerCase();
         Controller *controller = NULL;
-        if (query == "1") {
-            controller = new Viewer();
+        if (query == "stats") {
+            controller = new Stats();
+        } else if (query == "d") {
+            LOG_TOGGLE = !LOG_TOGGLE;
+        } else if (query == "readme") {
+            controller = new Readme();
         } else {
-            if (query != "STOP") {
+            if (query != "stop") {
                 std::cout << "Nu am inteles!\n";
             }
         }
 
         if (controller != NULL) {
-            controller->run();
+            controller->run(stoc_);
             delete controller;
         }
-    } while (query != "STOP");
+    } while (query != "stop");
 //    std::vector<std::string> trasaturi;
 //    trasaturi.push_back("bruna");
 //    trasaturi.push_back("blonda");

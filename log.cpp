@@ -6,10 +6,16 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+bool LOG_TOGGLE = false;
+
 void log_nomacro(const char *type, const char *function, int line, const char *a, ...) {
     FILE *f = stdout;
-    #ifndef DEBUG
+    if (LOG_TOGGLE)
         f = fopen("log.log", "a");
+    #ifndef DEBUG
+        if (!LOG_TOGGLE) {
+            f = fopen("log.log", "a");
+        }
     #endif
     va_list lst;
     va_start(lst, a);
@@ -17,7 +23,12 @@ void log_nomacro(const char *type, const char *function, int line, const char *a
     vfprintf(f, a, lst);
     fprintf(f, "\n");
     fflush(f);
-    #ifndef DEBUG
+    if (LOG_TOGGLE) {
         fclose(f);
+    }
+    #ifndef DEBUG
+        if (!LOG_TOGGLE) {
+            fclose(f);
+        }
     #endif
 }

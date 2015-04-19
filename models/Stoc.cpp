@@ -40,3 +40,13 @@ std::ostream &Stoc::saveSettings(std::ostream &out) const {
 void Stoc::addBun(Bun bun) {
     bunuri_.push_back(bun);
 }
+
+std::vector<const Bun *> Stoc::getBunuriPointer() const {
+    std::vector<const Bun *> bunuri;
+
+    for (std::vector<Bun>::const_iterator i = bunuri_.begin(); i != bunuri_.end(); ++i) {
+        bunuri.push_back(&(*i));
+    }
+
+    return bunuri;
+}

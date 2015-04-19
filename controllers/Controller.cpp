@@ -12,6 +12,6 @@ Controller::~Controller() {
     d("Controller despawned");
 }
 
-void Controller::run() {
-    d("Controller running");
+void Controller::run(Stoc &stoc) {
+    d("Controller running, not using stoc!");
 }

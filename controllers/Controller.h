@@ -6,11 +6,14 @@
 #define POO_2_CONTROLLER_H
 
 
+#include "../models/Stoc.h"
+
 class Controller {
 public:
     Controller();
     virtual ~Controller();
-    virtual void run();
+
+    virtual void run(Stoc &stoc);
 };
 
 

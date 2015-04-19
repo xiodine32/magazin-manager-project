@@ -20,6 +20,8 @@ public:
 
     const Bun *getBunQuery(std::string query) const;
 
+    std::vector<const Bun*> getBunuriPointer() const;
+
     void addBun(Bun bun);
 };
 

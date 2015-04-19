@@ -3,16 +3,20 @@
 //
 
 #include "Controller.h"
+#include "../models/Stoc.h"
 
 #ifndef POO_2_VIEWER_H
 #define POO_2_VIEWER_H
 
 
-class Viewer : public Controller {
+class Stats : public Controller {
 
 public:
-    Viewer();
-    ~Viewer();
+    void run(Stoc &stoc);
+
+    Stats();
+
+    ~Stats();
 };
 
 

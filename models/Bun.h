@@ -39,7 +39,6 @@ private:
     double pret_;
     double pret_furnizor_;
 
-    std::string getNume();
 };
 
 
