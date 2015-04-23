@@ -42,8 +42,6 @@ void ControllerAdauga::run(ModelStoc &stoc) {
             controllerAdaugaRefill.run(stoc);
         } else if (ce == "stop") {
 
-        } else {
-            con << "Nu am inteles!\n";
         }
     } while (ce != "stop");
 

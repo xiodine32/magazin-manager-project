@@ -13,5 +13,5 @@ ControllerAdaugaRefill::~ControllerAdaugaRefill() {
 }
 
 void ControllerAdaugaRefill::run(ModelStoc &stoc) {
-    Controller::run(stoc);
+
 }
