@@ -6,7 +6,8 @@
 #include "../log.h"
 
 const ModelBun *ModelStoc::getBunQuery(std::string query) const {
-
+    if (bunuri_.size())
+        return &(bunuri_[0]);
     return NULL;
 }
 
@@ -66,6 +67,14 @@ void ModelStoc::addStocToBun(const ModelBun *bun, int nrStoc) {
         if (&(*i) == bun) {
             i->adaugaStoc(nrStoc);
             return;
+        }
+    }
+}
+
+void ModelStoc::scoateStocFromBun(const ModelBun *bun, int nrStoc) {
+    for (bunuri_t::iterator i = bunuri_.begin(); i != bunuri_.end(); ++i) {
+        if (&(*i) == bun) {
+            i->adaugaStoc(-nrStoc);
         }
     }
 }

@@ -10,6 +10,7 @@
 #include "controllers/ControllerAdauga.h"
 #include "views/ViewConsole.h"
 #include "controllers/ControllerGoale.h"
+#include "controllers/ControllerComanda.h"
 
 #include <fstream>
 
@@ -36,6 +37,8 @@ void Engine::run() {
             controller = new ControllerAdauga();
         } else if (query == "goale") {
             controller = new ControllerGoale();
+        } else if (query == "comanda") {
+            controller = new ControllerComanda();
         }
 
         if (controller != NULL) {

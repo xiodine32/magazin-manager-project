@@ -24,7 +24,9 @@ ViewConsole *ViewConsole::singleton_ = NULL;
 
 std::string ViewConsole::getLine() {
     std::string ceva;
-    getline(std::cin, ceva);
+    do {
+        getline(std::cin, ceva);
+    } while (!ceva.length());
     return ceva;
 }
 

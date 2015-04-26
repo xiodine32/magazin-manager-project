@@ -11,4 +11,4 @@ file(GLOB CONTROLLERS controllers/*.cpp controllers/*.h)
 file(GLOB VIEWS views/*.cpp views/*.h)
 file(GLOB TOPLEVEL *.cpp *.h)
 
-add_executable(poo_2 ${TOPLEVEL} ${MODELS} ${VIEWS} ${CONTROLLERS} controllers/ControllerGoale.cpp controllers/ControllerGoale.h)
+add_executable(poo_2 ${TOPLEVEL} ${MODELS} ${VIEWS} ${CONTROLLERS})

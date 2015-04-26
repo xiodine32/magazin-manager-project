@@ -31,6 +31,8 @@ public:
     void addBun(ModelBun bun);
 
     void addStocToBun(const ModelBun *bun, int nrStoc);
+
+    void scoateStocFromBun(const ModelBun *bun, int nrStoc);
 };
 
 
