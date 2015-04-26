@@ -2,13 +2,66 @@
 // Created by xiodine on 4/15/15.
 //
 
+#include <sstream>
 #include "ModelStoc.h"
 #include "../log.h"
+#include "../stringR.h"
 
 const ModelBun *ModelStoc::getBunQuery(std::string query) const {
-    if (bunuri_.size())
-        return &(bunuri_[0]);
-    return NULL;
+    std::stringstream sstr(query);
+    ModelBun::trasaturi_t trasaturi;
+    stringR produs;
+    stringR trasatura;
+
+    sstr >> produs;
+    produs.toLowerCase();
+
+
+    while (!sstr.eof()) {
+        sstr >> trasatura;
+        trasatura.toLowerCase();
+        trasaturi.push_back(trasatura);
+    }
+
+    typedef ModelBun::trasaturi_t::const_iterator tci_t;
+
+
+    const ModelBun *produsGasit = NULL;
+
+    for (bunuri_t::const_iterator i = bunuri_.begin(); i != bunuri_.end(); ++i) {
+        stringR numeProdus;
+        numeProdus = i->getNume();
+        numeProdus.toLowerCase();
+
+        if (numeProdus == produs) {
+            bool produsBun = true;
+            const ModelBun::trasaturi_t &trasaturiProdus = i->getTrasaturi();
+
+            // for all trasaturi requested
+            for (tci_t j = trasaturi.begin(); j != trasaturi.end(); ++j) {
+                stringR trasaturaProdus = *j;
+                trasaturaProdus.toLowerCase();
+                // check if they all exist in the product.
+                bool trasaturaGasita = false;
+                for (tci_t k = trasaturiProdus.begin(); k != trasaturiProdus.end(); ++k) {
+                    if ((*k) == trasaturaProdus) {
+                        trasaturaGasita = true;
+                        break;
+                    }
+                }
+                if (!trasaturaGasita) {
+                    produsBun = false;
+                    break;
+                }
+            }
+            if (produsBun) {
+                produsGasit = &(*i);
+                break;
+            }
+        }
+    }
+
+    return produsGasit;
 }
 
 std::istream &ModelStoc::loadSettings(std::istream &in) {

@@ -9,13 +9,11 @@
 bool LOG_TOGGLE = false;
 
 void log_nomacro(const char *type, const char *function, int line, const char *a, ...) {
-    FILE *f = stdout;
     if (LOG_TOGGLE)
-        f = fopen("log.log", "a");
+        return;
+    FILE *f = stdout;
     #ifndef DEBUG
-        if (!LOG_TOGGLE) {
-            f = fopen("log.log", "a");
-        }
+        f = fopen("log.log", "a");
     #endif
     va_list lst;
     va_start(lst, a);
@@ -23,12 +21,7 @@ void log_nomacro(const char *type, const char *function, int line, const char *a
     vfprintf(f, a, lst);
     fprintf(f, "\n");
     fflush(f);
-    if (LOG_TOGGLE) {
-        fclose(f);
-    }
     #ifndef DEBUG
-        if (!LOG_TOGGLE) {
-            fclose(f);
-        }
+        fclose(f);
     #endif
 }

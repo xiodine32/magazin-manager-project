@@ -6,6 +6,7 @@
 #include "ControllerComanda.h"
 #include "../views/ViewConsole.h"
 #include "../log.h"
+#include "../stringR.h"
 
 #pragma mark - ControllerComanda
 
@@ -28,16 +29,18 @@ void ControllerComanda::run(ModelStoc &stoc) {
 
     con << "Comanda noua\n\n";
     con << "Comenzi posibile: \n";
-    con << " - nume [trasaturi, ...] cantitate [unitate]\n";
+    con << " - nume [trasaturi, ...]\n";
     con << " - subtotal\n";
     con << " - total\n";
     bool cautaProduse = true;
     while (cautaProduse) {
         con << "Query?: ";
         std::string str = con.getLine();
-        if (str == "total") {
+        stringR strLowerCase = str;
+        strLowerCase.c_str();
+        if (strLowerCase == "total") {
             cautaProduse = false;
-        } else if (str == "subtotal") {
+        } else if (strLowerCase == "subtotal") {
             for (cos_t::const_iterator i = cos_.begin(); i != cos_.end(); ++i) {
                 const Produs *prod = *i;
                 con << "Subtotal:\n";
@@ -48,17 +51,17 @@ void ControllerComanda::run(ModelStoc &stoc) {
             con << "\n";
             con << "---------- SUBTOTAL ---------\n";
             con << "Subtotal: " << getTotal() << "\n";
+        } else if (strLowerCase == "stop") {
+            return;
         } else {
             // it's a query, get product.
+            d("entering getBunQuery");
             const ModelBun *produs = stoc.getBunQuery(str);
             if (produs == NULL) {
                 con << "Produsul nu a fost gasit!\n";
             } else {
                 const ModelBun *bun = produs;
                 con << "Bun: " << bun->getNume() << "\n";
-#ifdef DEBUG
-                con << "Masura: " << bun->getMasura() << "\n";
-                con << "Stoc: " << bun->getStoc() << "\n";
                 con << "Trasaturi: ";
                 ModelBun::trasaturi_t trasaturi = bun->getTrasaturi();
                 for (ModelBun::trasaturi_t::const_iterator j = trasaturi.begin(); j != trasaturi.end(); ++j) {
@@ -67,8 +70,11 @@ void ControllerComanda::run(ModelStoc &stoc) {
                     con << '\'' << *j << '\'';
                 }
                 con << "\n";
-#endif
                 con << "Pret: " << bun->getPret() << "\n";
+#ifdef DEBUG
+                con << "** Masura: " << bun->getMasura() << "\n";
+                con << "** Stoc: " << bun->getStoc() << "\n";
+#endif
                 con << "\n";
                 con << "Cantitate dorita? (numar): ";
                 std::stringstream strstream(con.getLine());
