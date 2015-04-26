@@ -33,6 +33,8 @@ public:
     double getPret() const;
     double getPretFurnizor() const;
 
+    void adaugaStoc(int nr);
+
 private:
     std::string nume_;
     std::string masura_;

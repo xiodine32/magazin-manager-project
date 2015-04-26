@@ -22,6 +22,10 @@ void ControllerAdaugaProdusNou::run(ModelStoc &stoc) {
 
     con << "Introduce nume produs: ";
     string nume = con.getLine();
+    for (std::size_t i = 0, n = nume.length(); i < n; i++) {
+        if (nume[i] == '\\')
+            nume[i] = '_';
+    }
     con << "Introduce masura (buc/kg/etc): ";
     string masura = con.getLine();
 

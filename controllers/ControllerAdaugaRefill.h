@@ -16,6 +16,8 @@ public:
     virtual ~ControllerAdaugaRefill();
 
     virtual void run(ModelStoc &stoc);
+
+    size_t showOptions(ModelStoc &stoc);
 };
 
 

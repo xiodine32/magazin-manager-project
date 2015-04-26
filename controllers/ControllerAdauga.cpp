@@ -40,8 +40,6 @@ void ControllerAdauga::run(ModelStoc &stoc) {
         } else if (ce == "refill") {
             ControllerAdaugaRefill controllerAdaugaRefill;
             controllerAdaugaRefill.run(stoc);
-        } else if (ce == "stop") {
-
         }
     } while (ce != "stop");
 

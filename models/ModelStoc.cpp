@@ -5,10 +5,15 @@
 #include "ModelStoc.h"
 #include "../log.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#pragma clang diagnostic ignored "-Wunused-parameter"
 const ModelBun *ModelStoc::getBunQuery(std::string query) const {
 
     return NULL;
 }
+
+#pragma clang diagnostic pop
 
 std::istream &ModelStoc::loadSettings(std::istream &in) {
     int lungimeStocuri = 0;
@@ -41,10 +46,10 @@ void ModelStoc::addBun(ModelBun bun) {
     bunuri_.push_back(bun);
 }
 
-std::vector<const ModelBun *> ModelStoc::getBunuriPointer() const {
-    std::vector<const ModelBun *> bunuri;
+std::vector<ModelBun *> ModelStoc::getBunuriPointer() {
+    std::vector<ModelBun *> bunuri;
 
-    for (std::vector<ModelBun>::const_iterator i = bunuri_.begin(); i != bunuri_.end(); ++i) {
+    for (std::vector<ModelBun>::iterator i = bunuri_.begin(); i != bunuri_.end(); ++i) {
         bunuri.push_back(&(*i));
     }
 

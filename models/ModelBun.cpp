@@ -117,3 +117,7 @@ ModelBun::ModelBun(std::istream &input) {
 
     d("done loading bun");
 }
+
+void ModelBun::adaugaStoc(int nr) {
+    stoc_ += nr;
+}

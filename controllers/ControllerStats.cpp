@@ -19,7 +19,7 @@ void ControllerStats::run(ModelStoc &stoc) {
 
     ViewConsole &con = ViewConsole::getSingleton();
 
-    typedef std::vector<const ModelBun *> vect;
+    typedef std::vector<ModelBun *> vect;
 
     vect elemente = stoc.getBunuriPointer();
     for (vect::const_iterator i = elemente.begin(); i != elemente.end(); ++i) {

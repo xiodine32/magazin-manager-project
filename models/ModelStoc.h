@@ -18,9 +18,13 @@ public:
 
     std::ostream &saveSettings(std::ostream &out) const;
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
     const ModelBun *getBunQuery(std::string query) const;
 
-    std::vector<const ModelBun *> getBunuriPointer() const;
+#pragma clang diagnostic pop
+
+    std::vector<ModelBun *> getBunuriPointer();
 
     void addBun(ModelBun bun);
 };
