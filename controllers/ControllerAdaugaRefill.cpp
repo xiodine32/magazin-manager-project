@@ -18,16 +18,15 @@ std::size_t ControllerAdaugaRefill::showOptions(ModelStoc &stoc) {
     ViewConsole &con = ViewConsole::getSingleton();
 
     // typedefs
-    typedef std::vector<ModelBun *> bunuri_t;
     typedef ModelBun::trasaturi_t trasaturi_t;
 
 
     // for each bun
-    bunuri_t bunuri = stoc.getBunuriPointer();
+    ModelStoc::bunuri_pointer_t bunuri = stoc.getBunuriPointer();
 
     std::size_t nrProduse = 0;
 
-    for (bunuri_t::const_iterator i = bunuri.begin(); i != bunuri.end(); ++i) {
+    for (ModelStoc::bunuri_pointer_t::const_iterator i = bunuri.begin(); i != bunuri.end(); ++i) {
         const ModelBun &bun = **i;
 
         nrProduse++;
@@ -64,9 +63,8 @@ void ControllerAdaugaRefill::run(ModelStoc &stoc) {
                 int nrProd;
                 nrProdStr >> nrProd;
 
-                typedef std::vector<ModelBun *> bunuri_t;
-                bunuri_t bunuri = stoc.getBunuriPointer();
-                bunuri[nr - 1]->adaugaStoc(nrProd);
+                ModelStoc::bunuri_pointer_t bunuri = stoc.getBunuriPointer();
+                stoc.addStocToBun(bunuri[nr - 1], nrProd);
             }
         } // else nr == 0
     } while (nr != 0);

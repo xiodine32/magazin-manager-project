@@ -1,26 +1,24 @@
 //
-// Created by xiodine on 4/18/15.
+// Created by xiodine on 4/26/15.
 //
 
-#include "ControllerStats.h"
+#include "ControllerGoale.h"
 #include "../log.h"
 #include "../views/ViewConsole.h"
 
-ControllerStats::ControllerStats() {
-    d("ControllerStats");
+ControllerGoale::ControllerGoale() : Controller() {
+    d("ControllerGoale init");
 }
 
-ControllerStats::~ControllerStats() {
-    d("ControllerStats ended");
+ControllerGoale::~ControllerGoale() {
+    d("ControllerGoale destruct");
 }
 
-
-void ControllerStats::run(ModelStoc &stoc) {
-
+void ControllerGoale::run(ModelStoc &stoc) {
     ViewConsole &con = ViewConsole::getSingleton();
-
-    ModelStoc::bunuri_pointer_t elemente = stoc.getBunuriPointer();
-    for (ModelStoc::bunuri_pointer_t::const_iterator i = elemente.begin(); i != elemente.end(); ++i) {
+    con << "Produse cu stocul 0:\n\n";
+    ModelStoc::bunuri_pointer_t goale = stoc.getBunuriGoalePointer();
+    for (ModelStoc::bunuri_pointer_t::const_iterator i = goale.begin(); i != goale.end(); ++i) {
         const ModelBun *bun = (*i);
         con << "Bun: " << bun->getNume() << "\n";
         con << "Masura: " << bun->getMasura() << "\n";
@@ -35,5 +33,6 @@ void ControllerStats::run(ModelStoc &stoc) {
         con << "\n";
         con << "Pret vanzare: " << bun->getPret() << "\n";
         con << "Pret furnizor: " << bun->getPretFurnizor() << "\n";
+        con << "---\n";
     }
 }

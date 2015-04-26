@@ -11,22 +11,26 @@
 #include <vector>
 
 class ModelStoc : public Model {
-    std::vector<ModelBun> bunuri_;
+    typedef std::vector<ModelBun> bunuri_t;
+
+    bunuri_t bunuri_;
 public:
 
     std::istream &loadSettings(std::istream &in);
 
     std::ostream &saveSettings(std::ostream &out) const;
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
     const ModelBun *getBunQuery(std::string query) const;
 
-#pragma clang diagnostic pop
+    typedef std::vector<const ModelBun *> bunuri_pointer_t;
 
-    std::vector<ModelBun *> getBunuriPointer();
+    bunuri_pointer_t getBunuriPointer();
+
+    bunuri_pointer_t getBunuriGoalePointer();
 
     void addBun(ModelBun bun);
+
+    void addStocToBun(const ModelBun *bun, int nrStoc);
 };
 
 

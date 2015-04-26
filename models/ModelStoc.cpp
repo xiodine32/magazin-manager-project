@@ -5,15 +5,10 @@
 #include "ModelStoc.h"
 #include "../log.h"
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-#pragma clang diagnostic ignored "-Wunused-parameter"
 const ModelBun *ModelStoc::getBunQuery(std::string query) const {
 
     return NULL;
 }
-
-#pragma clang diagnostic pop
 
 std::istream &ModelStoc::loadSettings(std::istream &in) {
     int lungimeStocuri = 0;
@@ -46,12 +41,31 @@ void ModelStoc::addBun(ModelBun bun) {
     bunuri_.push_back(bun);
 }
 
-std::vector<ModelBun *> ModelStoc::getBunuriPointer() {
-    std::vector<ModelBun *> bunuri;
+ModelStoc::bunuri_pointer_t ModelStoc::getBunuriPointer() {
+    ModelStoc::bunuri_pointer_t bunuri;
 
     for (std::vector<ModelBun>::iterator i = bunuri_.begin(); i != bunuri_.end(); ++i) {
         bunuri.push_back(&(*i));
     }
 
     return bunuri;
+}
+
+ModelStoc::bunuri_pointer_t ModelStoc::getBunuriGoalePointer() {
+    bunuri_pointer_t bunuri;
+    for (bunuri_t::const_iterator i = bunuri_.begin(); i != bunuri_.end(); ++i) {
+        if (i->getStoc() == 0)
+            bunuri.push_back(&(*i));
+    }
+    return bunuri;
+}
+
+void ModelStoc::addStocToBun(const ModelBun *bun, int nrStoc) {
+    //find bun
+    for (bunuri_t::iterator i = bunuri_.begin(); i != bunuri_.end(); ++i) {
+        if (&(*i) == bun) {
+            i->adaugaStoc(nrStoc);
+            return;
+        }
+    }
 }
